@@ -1,9 +1,9 @@
 from random import randint
 from time import time
-from typing import Tuple
 
 from cryptohw2.publickeyencryption.elgamal import ElGamal
 from cryptohw2.publickeyencryption.basepublickeyencryptionscheme import BasePublicKeyEncryptionScheme
+from cryptohw2.publickeyencryption.rsa import RSA
 
 
 def printAverageEncryptionSchemeRunTimes(publicKeyEncryptionScheme: BasePublicKeyEncryptionScheme, trials: int = 3):
@@ -39,17 +39,18 @@ def printAverageEncryptionSchemeRunTimes(publicKeyEncryptionScheme: BasePublicKe
 
 
 def main():
-    # printAverageEncryptionSchemeRunTimes(RSA, 7)
-    # printAverageEncryptionSchemeRunTimes(ElGamal, 7)
-    # printAverageEncryptionSchemeRunTimes(OAEP, 7)
-    message = 13
-    publicKey, privateKey = ElGamal.generate()
-    cipherText = ElGamal.encrypt(message, publicKey)
-    decryptedMessage = ElGamal.decrypt(cipherText, privateKey)
+    trails = 1
+    printAverageEncryptionSchemeRunTimes(RSA, trails)
+    printAverageEncryptionSchemeRunTimes(ElGamal, trails)
+    # printAverageEncryptionSchemeRunTimes(OAEP, trails)
+    # message = 13
+    # publicKey, privateKey = ElGamal.generate()
+    # cipherText = ElGamal.encrypt(message, publicKey)
+    # decryptedMessage = ElGamal.decrypt(cipherText, privateKey)
 
-    print(message)
-    print(cipherText)
-    print(decryptedMessage)
+    # print(message)
+    # print(cipherText)
+    # print(decryptedMessage)
 
 
 if __name__ == "__main__":
