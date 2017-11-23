@@ -8,16 +8,12 @@ from cryptohw2.utility import getRandomPrime, modInverse
 
 class ElGamal(BasePublicKeyEncryptionScheme):
     @staticmethod
-    def generate():
-        print("Finding p ...")
-        q: int = getRandomPrime(2, 2 ** 1024 - 1)
+    def generate(keySize):
+        q: int = getRandomPrime(2, 2 ** (keySize - 1) - 1)
         p: int = 2 * q + 1
         while not isprime(p):
-            print(q)
-            q = getRandomPrime(2, 2 ** 1024 - 1)
+            q = getRandomPrime(2, 2 ** (keySize - 1) - 1)
             p = 2 * q + 1
-        print(p)
-        print("Finding g ...")
         g: int = randint(2, p - 2)
         g2: int = (g * g) % p
         g3: int = (g2 * g) % p
@@ -25,7 +21,6 @@ class ElGamal(BasePublicKeyEncryptionScheme):
             g = randint(2, p - 2)
             g2 = (g * g) % p
             g3 = (g2 * g) % p
-        print(g)
         x: int = randint(1, p - 1)
         h = pow(g, x, p)
         privateKey = x, p

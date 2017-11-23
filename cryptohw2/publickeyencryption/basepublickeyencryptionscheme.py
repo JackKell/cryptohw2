@@ -4,7 +4,7 @@ from abc import ABC, abstractmethod
 class BasePublicKeyEncryptionScheme(ABC):
     @staticmethod
     @abstractmethod
-    def generate():
+    def generate(keySize):
         ...
 
     @staticmethod

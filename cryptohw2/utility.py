@@ -35,9 +35,3 @@ def modInverse(a, m) -> Union[Optional[int], Any]:
         return x % m
 
 
-def powerMod(term: int, exponent: int, mod: int) -> int:
-    value = term
-    for i in range(1, exponent):
-        value *= term
-        value %= mod
-    return value

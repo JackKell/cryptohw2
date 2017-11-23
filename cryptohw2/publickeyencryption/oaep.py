@@ -3,7 +3,7 @@ from cryptohw2.publickeyencryption.basepublickeyencryptionscheme import BasePubl
 
 class OAEP(BasePublicKeyEncryptionScheme):
     @staticmethod
-    def generate():
+    def generate(keySize):
         pass
 
     @staticmethod

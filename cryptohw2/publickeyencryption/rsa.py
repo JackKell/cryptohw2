@@ -7,9 +7,9 @@ from cryptohw2.utility import getRandomPrime, gcd, modInverse
 
 class RSA(BasePublicKeyEncryptionScheme):
     @staticmethod
-    def generate() -> Tuple[Tuple[int, int], Tuple[int, int]]:
-        p: int = getRandomPrime(2, 2 ** 2048 - 1)
-        q: int = getRandomPrime(2, 2 ** 2028 - 1)
+    def generate(keySize) -> Tuple[Tuple[int, int], Tuple[int, int]]:
+        p: int = getRandomPrime(2, 2 ** keySize // 2 - 1)
+        q: int = getRandomPrime(2, 2 ** keySize // 2 - 1)
         N: int = p * q
         phiN: int = (p - 1) * (q - 1)
         e: int = randint(10000, 100000)
